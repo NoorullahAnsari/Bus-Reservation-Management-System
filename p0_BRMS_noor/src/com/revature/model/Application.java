@@ -1,12 +1,12 @@
 package com.revature.model;
 import com.revature.constants.Constant;
-import com.revature.menu.Menu;
+import com.revature.dao.imp.UserDaoImpl;
 import com.revature.util.SymbolPrint;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class App {
+public class Application {
 
 	public static void main(String[] args) {
 		Connection con = null;
@@ -21,7 +21,7 @@ public class App {
 			System.out.println("Exception"+e.getMessage());
 		}
 		Scanner sc = new Scanner(System.in);
-		Menu menu = new Menu();
+		UserDaoImpl  ud = new UserDaoImpl();
 		
 		do {
 			String ch;
@@ -30,7 +30,7 @@ public class App {
 			SymbolPrint.symbolPrint();
 			System.out.println("\t\t"+(char)0x2764+""+Constant.greeting+""+(char)0x2764);
 			SymbolPrint.symbolPrint();
-			System.out.println("\n\t1. LogIn\n\t2. Register\n\t3. Exit");
+			System.out.println("\n\t1. LogIn\n\t2. Exit");
 			System.out.print("\n\tEnter choice :\t");
 			ch = sc.nextLine();
 			try
@@ -44,9 +44,8 @@ public class App {
 		      }
 
 			switch(choice) {
-			case 1: menu.LogIn(); break;
-			//case 2: menu.register(); break;
-			case 3:
+			case 1:ud.logIn(); break;
+			case 2:
 
 				try {
 					sc.close();
@@ -57,7 +56,7 @@ public class App {
 				System.out.println("\n\n\n\n\n\t\t\t"+(char)0x2764+ ""+Constant.thankYou+""+(char)0x2764);
 				System.out.println("\t\t\t#############");
 				System.exit(0);
-			default: System.err.println("\t"+Constant.wrongInput+"\n\n");
+			default: System.out.println("\t"+Constant.wrongInput+"\n\n");
 			}
 			
 		}while(true);
