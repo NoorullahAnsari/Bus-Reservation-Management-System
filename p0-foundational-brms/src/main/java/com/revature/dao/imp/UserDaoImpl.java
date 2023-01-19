@@ -145,6 +145,7 @@ public class UserDaoImpl {
 						}
 					} else {
 						logger.info("\t\tThank you");
+						return;
 					}
 
 				} 
